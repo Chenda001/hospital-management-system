@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+.env
+*.env
+venv/
+ENV/
+env/
+.venv/
+
+# VS Code
+.vscode/
+
+# Django migrations
+**/migrations/
+!*/migrations/__init__.py
+
+# Static and media (if generated)
+staticfiles/
+media/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.pid
+
+# Coverage and test output
+htmlcov/
+coverage.xml
+*.cover
+.cache
+nosetests.xml
+test_*.xml
+
+# Pytest
+.pytest_cache/
