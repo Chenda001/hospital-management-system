@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'pwani_hospital/index.html')
+    return render(request, 'index.html')
 
 def about(request):
-    return render(request, 'pwani_hospital/about.html')
-
-def contact(request):
-    return render(request, 'pwani_hospital/contact.html')
+    return render(request, 'about.html')
 
 def services(request):
-    return render(request, 'pwani_hospital/services.html')
+    return render(request, 'services.html')
+
+def contact(request):
+    return render(request, 'contact.html')

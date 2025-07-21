@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Pwani Hospital</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer style="text-align: center; padding: 1em; background-color: #f2f2f2; color: #333;">
+        <p>pwanihospital@gmail.com</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: whitesmoke;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px 20px;
+}
+
+nav a {
+    color: black;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: purple;
+}
