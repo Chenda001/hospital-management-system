@@ -8,6 +8,3 @@ admin.site.register(Service)
 admin.site.register(ContactMessage)
 admin.site.register(Footer)
 
-
-
-# Register your models here.
