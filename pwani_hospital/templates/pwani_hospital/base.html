@@ -1,21 +1,21 @@
+
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Pwani Hospital</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
 
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-    </div>
+{% block content %}
+<div class="container">
+    <h1>WELCOME TO PWANI HOSPITAL</h1>
+       <p>Your health is our priority</p>
+        <p>Navigate through our website to learn more about our services and how we can help you.</p>
+</div>
+{% endblock %}
+<footer>
+  <p>&copy; {{ footer.company_name }} - {{ footer.copyright_text }}</p>
+ <p>Contact us: <a href="mailto:pwanihospital001@gmail.com">{{ footer.email }}</a> | {{ footer.phone  }} </p>
 
-    <footer style="text-align: center; padding: 1em; background-color: #f2f2f2; color: #333;">
-        <p>pwanihospital@gmail.com</p>
-    </footer>
+  <div>
+    <a href="{{ footer.facebook_link }}">Facebook</a> |
+    <a href="{{ footer.twitter_link }}">Twitter</a> |
+    <a href="{{ footer.linkedin_link }}">LinkedIn</a>
+  </div>
+</footer>
 
-</body>
-</html>
