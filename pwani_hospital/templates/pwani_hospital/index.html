@@ -1,9 +1,51 @@
 {% extends 'pwani_hospital/base.html' %}
 
-{% load static %}
+{% block title %}{{ home_content.title|default:"Home" }} - {{ base_settings.site_name }}{% endblock %}
 
 {% block content %}
-<h1>WELCOME TO PWANI HOSPITAL</h1>
-   <p>Your health is our priority.</p>
-    <p>Navigate through our website to learn more about our services and how we can help you.</p>
+<!-- Hero Section -->
+<div class="hero-section text-center mb-5">
+    <div class="container">
+        {% if home_content %}
+            <h1 class="display-4">{{ home_content.title }}</h1>
+            <p class="lead my-4">{{ home_content.subtitle }}</p>
+            <p>{{ home_content.welcome_message }}</p>
+        {% else %}
+            <h1 class="display-4">Welcome to Pwani Hospital</h1>
+            <p class="lead my-4">Your Health, Our Priority.</p>
+        {% endif %}
+        <a href="{% url 'contact' %}" class="btn btn-light btn-lg mt-3">Book an Appointment</a>
+        <a href="{% url 'services' %}" class="btn btn-light btn-lg mt-3">Our Services</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<section class="container py-5">
+    <div class="section-title">
+        <h2>Why Choose Us</h2>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm p-4">
+                <div class="card-icon"><i class="fas fa-user-md"></i></div>
+                <h4 class="card-title">Expert Doctors</h4>
+                <p class="card-text">Our team of highly qualified and experienced doctors is dedicated to providing the best possible care.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm p-4">
+                <div class="card-icon"><i class="fas fa-pills"></i></div>
+                <h4 class="card-title">Modern Pharmacy</h4>
+                <p class="card-text">We have a fully stocked, modern pharmacy to meet all your medication needs promptly.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm p-4">
+                <div class="card-icon"><i class="fas fa-ambulance"></i></div>
+                <h4 class="card-title">24/7 Emergency Care</h4>
+                <p class="card-text">Our emergency services are available around the clock to handle any medical crisis.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

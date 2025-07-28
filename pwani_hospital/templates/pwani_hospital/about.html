@@ -1,9 +1,34 @@
 {% extends 'pwani_hospital/base.html' %}
 {% load static %}
-{% load static %}
+
+{% block title %}About Us - {{ base_settings.site_name }}{% endblock %}
 
 {% block content %}
-<h1>ABOUT PWANI HOSPITAL</h1>
-  <p>Pwani Hospital is committed to providing quality healthcare to the community.</p>
-     <p>Our dedicated team works around the clock to ensure patients get the best medical services available.</p>
+<section class="py-5">
+    <div class="container">
+        <div class="section-title">
+            <h2>About Us</h2>
+        </div>
+
+        {% if about %}
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3>{{ about.heading }}</h3>
+                <p class="lead">{{ about.content|linebreaks }}</p>
+            </div>
+            <div class="col-lg-6 text-center">
+                {% if about.image %}
+                    <img src="{{ about.image.url }}" alt="{{ about.heading }}" class="img-fluid rounded shadow-lg">
+                {% else %}
+                    <img src="https://via.placeholder.com/500x350.png?text=Our+Facility" alt="Pwani Hospital Facility" class="img-fluid rounded shadow-lg">
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center">
+            <p>About information is not available at the moment. Please check back later.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
