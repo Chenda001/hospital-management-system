@@ -1,21 +1,139 @@
-
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pwani Hospital{% endblock %}</title>
 
-{% block content %}
-<div class="container">
-    <h1>WELCOME TO PWANI HOSPITAL</h1>
-       <p>Your health is our priority</p>
-        <p>Navigate through our website to learn more about our services and how we can help you.</p>
-</div>
-{% endblock %}
-<footer>
-  <p>&copy; {{ footer.company_name }} - {{ footer.copyright_text }}</p>
- <p>Contact us: <a href="mailto:pwanihospital001@gmail.com">{{ footer.email }}</a> | {{ footer.phone  }} </p>
+    <meta name="description" content="{% block description %}Welcome to Pwani Hospital 
+    - Your health is our priority{% endblock %}">
 
-  <div>
-    <a href="{{ footer.facebook_link }}">Facebook</a> |
-    <a href="{{ footer.twitter_link }}">Twitter</a> |
-    <a href="{{ footer.linkedin_link }}">LinkedIn</a>
-  </div>
-</footer>
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{% static 'pwani_hospital/css/style.css' %}">
 
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <i class="fas fa-hospital me-2"></i>{{ base_settings.site_name|default:"Pwani Hospital" }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                    <div class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                            <span class="navbar-text me-3">
+                                Welcome, {{ user.username }}!
+                            </span>
+                            {# You might want a link to a user profile here #}
+                            <a href="{% url 'logout' %}" class="btn btn-outline-primary">Logout</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-primary me-2">Login</a>
+                            <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}
+        <!-- Page-specific content will be inserted here by child templates -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start text-dark mt-auto">
+        {% if footer %}
+        <!-- Section: Links  -->
+        <section class="pt-4">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <!-- Hospital Info -->
+                    <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-hospital me-3"></i>{{ base_settings.site_name|default:"Pwani Hospital" }}
+                        </h6>
+                        <p>
+                            We are dedicated to providing top-quality healthcare with compassion and expertise. Your health is our priority.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="col-md-2 col# In your settings.py file (e.g., hospital-management-system/settings.py)
+                    
+                    # ... other settings
+                    
+                    LOGOUT_REDIRECT_URL = 'home' 
+                    -lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Quick Links</h6>
+                        <p><a href="{% url 'home' %}" class="text-reset text-decoration-none">Home</a></p>
+                        <p><a href="{% url 'about' %}" class="text-reset text-decoration-none">About</a></p>
+                        <p><a href="{% url 'services' %}" class="text-reset text-decoration-none">Services</a></p>
+                        <p><a href="{% url 'contact' %}" class="text-reset text-decoration-none">Contact</a></p>
+                    </div>
+
+                    <!-- Services -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Our Services</h6>
+                        {% for service in footer_services %}
+                            <p><a href="{% url 'services' %}#service-{{ service.id }}" class="text-reset text-decoration-none">{{ service.name }}</a></p>
+                        {% empty %}
+                            <p><a href="{% url 'services' %}" class="text-reset text-decoration-none">View All</a></p>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        {% if footer.location %}<p><i class="fas fa-home me-3"></i>{{ footer.location }}</p>{% endif %}
+                        {% if footer.email %}<p><i class="fas fa-envelope me-3"></i><a href="mailto:{{ footer.email }}" class="text-reset text-decoration-none">{{ footer.email }}</a></p>{% endif %}
+                        {% if footer.phone %}<p><i class="fas fa-phone me-3"></i><a href="tel:{{ footer.phone }}" class="text-reset text-decoration-none">{{ footer.phone }}</a></p>{% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Copyright and Socials -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            &copy; {% now "Y" %} {{ footer.copyright_text|default:footer.company_name }}.
+            <span class="ms-4">
+                {% if footer.facebook_link %}<a class="text-dark me-4" href="{{ footer.facebook_link }}" role="button" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>{% endif %}
+                {% if footer.twitter_link %}<a class="text-dark me-4" href="{{ footer.twitter_link }}" role="button" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>{% endif %}
+                {% if footer.linkedin_link %}<a class="text-dark me-4" href="{{ footer.linkedin_link }}" role="button" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>{% endif %}
+            </span>
+        </div>
+        {% endif %}
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
