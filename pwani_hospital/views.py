@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import login
 from .models import HomeContent, AboutSection, Service, ContactMessage
+from .forms  import UserRegisterForm
 
 def index(request):
     try:
@@ -43,3 +45,16 @@ def contact(request):
             messages.error(request, 'Please fill out all fields.')
 
     return render(request, 'pwani_hospital/contact.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)  # Automatically log in the user after registration
+            messages.success(request, 'Registration successful! You are now logged in.')
+            return redirect('home')
+    else:
+        form = UserRegisterForm()
+
+    return render(request, 'pwani_hospital/register.html', {'form': form})

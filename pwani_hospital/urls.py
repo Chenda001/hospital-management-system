@@ -10,6 +10,8 @@ urlpatterns = [
 
     # Authentication URLs
     # The 'logout' URL now uses Django's built-in LogoutView.
+    path('register/', views.register, name='register'), 
+    path ('login/', auth_views.LoginView.as_view(template_name='pwani_hospital/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    # Note: You will still need to create URLs and views for 'login' and 'register'.
-]
+  
+]   
