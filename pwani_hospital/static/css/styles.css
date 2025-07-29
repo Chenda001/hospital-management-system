@@ -1,26 +1,120 @@
+/* General Body & Typography */
 body {
-    font-family: 'Times New Roman', Times, serif;
-    background-color: whitesmoke;
-    margin: 0;
-    padding: 20px;
-}
-
-header {
-    background-color: whitesmoke;
-    color: black;
-    padding: 10px 20px;
-}
-
-nav a {
-    color: black;
-    margin-right: 15px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    text-decoration: underline;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #495057;
+    line-height: 1.6;
+    background-color: #fdfdff; /* A very light off-white for the body */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: purple;
+    font-weight: 700;
+    color: #343a40;
+}
+
+/* Custom Colors & Theme */
+:root {
+    --primary-color: #0d6efd; /* Bootstrap Primary Blue */
+    --secondary-color: #6c757d; /* Bootstrap Secondary Gray */
+    --light-bg: #f8f9fa;
+    --dark-text: #343a40;
+}
+
+/* Navbar Customization */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    transition: color 0.3s ease-in-out;
+    border-radius: 0.25rem;
+    margin: 0 0.25rem;
+}
+
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Hero Section for Homepage */
+.hero-section {
+    /* NOTE: Create an 'images' folder in 'static/pwani_hospital' and add a background image named 'hero-bg.jpg' */
+    background: linear-gradient(rgba(13, 110, 253, 0.7), rgba(13, 110, 253, 0.7)), url('../images/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+}
+
+.hero-section h1, .hero-section p {
+    color: white;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.hero-section .btn {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Section Title Styling */
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 3px;
+    background: var(--primary-color);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 0.5rem;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Contact Form Section */
+.contact-form-section {
+    background-color: var(--light-bg);
+    border-radius: 0.5rem;
+}
+
+/* Footer Social Icons */
+footer .fab {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+footer .fab:hover {
+    transform: scale(1.2);
+    color: var(--primary-color);
 }

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'pwani_hospital',
+    'pwani_hospital',
 ]
 
 MIDDLEWARE = [
@@ -57,15 +57,16 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),  # Global templates directory
-            os.path.join(BASE_DIR, 'pwani_hospital', 'templates'),  # App-specific templates directory
+            os.path.join(BASE_DIR, 'templates'),  # Global templates directory, if you have one
         ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pwani_hospital.context_processors.site_context', # Makes footer and base settings available globally
             ],
         },
     },
@@ -115,15 +116,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = [
     BASE_DIR / 'pwani_hospital' / 'static',  # Tells Django where to find your CSS, JS, images, etc.
 ]
+# In your settings.py file (e.g., hospital-management-system/settings.py)
+
+# ... other settings
+
+LOGOUT_REDIRECT_URL = 'home' 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

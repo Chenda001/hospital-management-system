@@ -1,12 +1,56 @@
-{% extends 'base.html' %}
+{% extends 'pwani_hospital/base.html' %}
 {% load static %}
 
+{% block title %}Contact Us - {{ base_settings.site_name }}{% endblock %}
+
 {% block content %}
-<h1>Contact Us</h1>
-<p>If you have any questions or concerns, feel free to reach out.</p>
-<ul>
-    <li>Email: pwanihospital001@gmail.com</li>
-    <li>Phone: +254 700 000 000</li>
-    <li>Location: Pwani Hospital, Kilifi</li>
-</ul>
+<section class="py-5">
+    <div class="container">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+        </div>
+
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="p-4 h-100 contact-form-section">
+                    <h4 class="mb-4">Contact Information</h4>
+                    {% if footer %}
+                        <p>
+                            <i class="fas fa-map-marker-alt me-3 text-primary"></i>
+                            <strong>Location:</strong><br>{{ footer.location }}
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope me-3 text-primary"></i>
+                            <strong>Email:</strong><br><a href="mailto:{{ footer.email }}" class="text-reset">{{ footer.email }}</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone me-3 text-primary"></i>
+                            <strong>Phone:</strong><br><a href="tel:{{ footer.phone }}" class="text-reset">{{ footer.phone }}</a>
+                        </p>
+                    {% else %}
+                        <p>Contact details are currently unavailable.</p>
+                    {% endif %}
+                    <hr>
+                    <p>Feel free to reach out to us through any of the methods above, or use the contact form.</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="p-4 contact-form-section">
+                    <h4 class="mb-4">Send Us a Message</h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3"><input type="text" class="form-control" name="name" placeholder="Your Name" required></div>
+                        <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Your Email" required></div>
+                        <div class="mb-3"><input type="text" class="form-control" name="subject" placeholder="Subject" required></div>
+                        <div class="mb-3"><textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea></div>
+                        <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

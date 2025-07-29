@@ -1,13 +1,37 @@
-{% extends 'base.html' %}
+{% extends 'pwani_hospital/base.html' %}
 {% load static %}
 
+{% block title %}Our Services - {{ base_settings.site_name }}{% endblock %}
+
 {% block content %}
-<h1>Our Services</h1>
-<ul>
-    <li>Outpatient Services</li>
-    <li>Inpatient Care</li>
-    <li>Emergency Services</li>
-    <li>Maternity Care</li>
-    <li>Laboratory and Imaging</li>
-</ul>
+<section class="py-5">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Medical Services</h2>
+        </div>
+
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                <div class="card w-100 text-center shadow-sm">
+                    <div class="card-body">
+                        <div class="card-icon">
+                            <i class="{{ service.icon|default:'fas fa-clinic-medical' }}"></i>
+                        </div>
+                        <h4 class="card-title mt-3">{{ service.name }}</h4>
+                        <p class="card-text">{{ service.description }}</p>
+                        {% if service.price %}
+                            <p class="card-text"><strong>Price: Ksh. {{ service.price|floatformat:2 }}</strong></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <p class="text-center">No services are currently listed. Please check back later.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 {% endblock %}
