@@ -9,15 +9,16 @@
     <meta name="description" content="{% block description %}Welcome to Pwani Hospital 
     - Your health is our priority{% endblock %}">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS for styling -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="{% static 'pwani_hospital/css/style.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -34,6 +35,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'doctors' %}">Doctors</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'services' %}">Services</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
                     </ul>
@@ -45,7 +47,7 @@
                             {# You might want a link to a user profile here #}
                             <a href="{% url 'logout' %}" class="btn btn-outline-primary">Logout</a>
                         {% else %}
-                            <a href="{% url 'login' %}" class="btn btn-primary me-2">Login</a>
+                            <a href="{% url 'login' %}" class="btn btn-primary ">Login</a>
                             <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
                         {% endif %}
                     </div>
@@ -54,7 +56,7 @@
         </nav>
     </header>
 
-    <main class="container py-4">
+    <main class="flex-grow-1">
         {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -65,12 +67,12 @@
         {% endif %}
 
         {% block content %}
-        <!-- Page-specific content will be inserted here by child templates -->
+        
         {% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-light text-center text-lg-start text-dark mt-auto">
+    <footer class="footer text-center text-lg-start text-dark mt-auto">
         {% if footer %}
         <!-- Section: Links  -->
         <section class="pt-4">
@@ -87,15 +89,11 @@
                     </div>
 
                     <!-- Quick Links -->
-                    <div class="col-md-2 col# In your settings.py file (e.g., hospital-management-system/settings.py)
-                    
-                    # ... other settings
-                    
-                    LOGOUT_REDIRECT_URL = 'home' 
-                    -lg-2 col-xl-2 mx-auto mb-4">
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">Quick Links</h6>
                         <p><a href="{% url 'home' %}" class="text-reset text-decoration-none">Home</a></p>
                         <p><a href="{% url 'about' %}" class="text-reset text-decoration-none">About</a></p>
+                        <p><a href="{% url 'doctors' %}" class="text-reset text-decoration-none">Doctors</a></p>
                         <p><a href="{% url 'services' %}" class="text-reset text-decoration-none">Services</a></p>
                         <p><a href="{% url 'contact' %}" class="text-reset text-decoration-none">Contact</a></p>
                     </div>

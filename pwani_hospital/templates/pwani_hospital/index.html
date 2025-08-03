@@ -1,23 +1,23 @@
 {% extends 'pwani_hospital/base.html' %}
+{% load static %}
 
-{% block title %}{{ home_content.title|default:"Home" }} - {{ base_settings.site_name }}{% endblock %}
+{% block title %}Home - {{ base_settings.site_name }}{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<div class="hero-section text-center mb-5">
+<section class="hero-section text-center">
     <div class="container">
         {% if home_content %}
             <h1 class="display-4">{{ home_content.title }}</h1>
             <p class="lead my-4">{{ home_content.subtitle }}</p>
-            <p>{{ home_content.welcome_message }}</p>
         {% else %}
             <h1 class="display-4">Welcome to Pwani Hospital</h1>
             <p class="lead my-4">Your Health, Our Priority.</p>
         {% endif %}
-        <a href="{% url 'contact' %}" class="btn btn-light btn-lg mt-3">Book an Appointment</a>
-        <a href="{% url 'services' %}" class="btn btn-light btn-lg mt-3">Our Services</a>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg mt-3">Book an Appointment</a>
+        <a href="{% url 'services' %}" class="btn btn-outline-light btn-lg mt-3">Our Services</a>
     </div>
-</div>
+</section>
 
 <!-- Features Section -->
 <section class="container py-5">
@@ -48,4 +48,31 @@
         </div>
     </div>
 </section>
+
+<!-- Featured Doctors Section -->
+{% if doctors %}
+<section class="container py-5">
+    <div class="section-title">
+        <h2>Meet Our Doctors</h2>
+        <p>Our dedicated professionals are here to provide you with exceptional care.</p>
+    </div>
+    <div class="row">
+        {% for doctor in doctors %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
+            <a href="{% url 'doctor_detail' doctor.id %}" class="text-decoration-none text-dark w-100">
+                <div class="member card w-100 text-center shadow-sm h-100">
+                    <div class="member-img">
+                        <img src="{{ doctor.image.url }}" class="card-img-top" alt="{{ doctor.name }}">
+                    </div>
+                    <div class="member-info card-body">
+                        <h4>{{ doctor.name }}</h4>
+                        <span class="text-muted">{{ doctor.specialty }}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
 {% endblock %}

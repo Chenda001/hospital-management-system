@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class HomeContent(models.Model):
     title = models.CharField(max_length=200)
@@ -30,12 +31,23 @@ class Service(models.Model):
     def __str__(self):
         return self.name
 
+class Doctor(models.Model):
+    name = models.CharField(max_length=100)
+    specialty = models.CharField(max_length=100)
+    bio = models.TextField(blank=True)
+    image = models.ImageField(upload_to='doctors/', help_text="Upload a profile picture for the doctor.")
+
+    def __str__(self):
+        return f"Dr. {self.name} - {self.specialty}"
+
+
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=200)
     message = models.TextField()
-    sent_at = models.DateTimeField(auto_now_add=True)
+    
+    submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Message from {self.name} - {self.subject}"
@@ -61,9 +73,9 @@ class Footer(models.Model):
     location = models.CharField(max_length=255, blank=True)
     email = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
-    facebook_link = models.URLField(blank=True)
-    twitter_link = models.URLField(blank=True)
-    linkedin_link = models.URLField(blank=True)
+    facebook_link = models.URLField(default='#', blank=True)
+    twitter_link = models.URLField(default='#', blank=True)
+    linkedin_link = models.URLField(default='#', blank=True)
 
     def __str__(self):
         return f"Footer Settings for {self.company_name}"

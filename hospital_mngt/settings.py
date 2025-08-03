@@ -116,22 +116,18 @@ USE_I18N = True
 
 USE_TZ = True
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 STATICFILES_DIRS = [
     BASE_DIR / 'pwani_hospital' / 'static',  # Tells Django where to find your CSS, JS, images, etc.
 ]
-# In your settings.py file (e.g., hospital-management-system/settings.py)
-
-# ... other settings
-
+# Redirect to home URL after login
+LOGIN_REDIRECT_URL = 'home'
+# Redirect to home URL after logout
 LOGOUT_REDIRECT_URL = 'home' 
 
 # Default primary key field type

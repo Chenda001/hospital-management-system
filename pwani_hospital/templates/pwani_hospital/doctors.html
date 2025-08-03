@@ -1,0 +1,36 @@
+{% extends 'pwani_hospital/base.html' %}
+{% load static %}
+
+{% block title %}Our Doctors - {{ base_settings.site_name }}{% endblock %}
+
+{% block content %}
+<section id="doctors" class="doctors section-bg py-5">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Our Dedicated Doctors</h2>
+            <p>Meet our team of highly qualified and experienced medical professionals who are dedicated to providing the best care.</p>
+        </div>
+
+        <div class="row">
+            {% for doctor in doctors %}
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4">
+                <a href="{% url 'doctor_detail' doctor.id %}" class="text-decoration-none text-dark w-100">
+                    <div class="member card w-100 text-center shadow-sm h-100">
+                        <div class="member-img">
+                            <img src="{{ doctor.image.url }}" class="card-img-top" alt="{{ doctor.name }}">
+                        </div>
+                        <div class="member-info card-body">
+                            <h4>{{ doctor.name }}</h4>
+                            <span class="text-muted">{{ doctor.specialty }}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <p class="text-center">We are currently updating our list of doctors. Please check back soon.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

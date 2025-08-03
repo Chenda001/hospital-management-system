@@ -1,0 +1,116 @@
+/* --- Google Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* --- General Body & Typography --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #495057; /* Softer text color */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #0c4c91; /* Primary dark blue for headings */
+}
+
+/* --- Navbar & Header --- */
+.navbar {
+    border-bottom: 3px solid #1977cc; /* Primary blue accent */
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #0c4c91 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    background-color: #1977cc;
+    border-color: #1977cc;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0c4c91;
+    border-color: #0c4c91;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* --- Section Styling --- */
+.section-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #1977cc;
+    bottom: 0;
+    left: calc(50% - 25px);
+}
+
+/* --- Hero Section (Homepage) --- */
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=2128&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(12, 76, 145, 0.7); /* Dark blue overlay */
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Card Styling (Features, Doctors, Services) --- */
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important;
+}
+
+.card-icon {
+    font-size: 48px;
+    color: #1977cc;
+    margin-bottom: 15px;
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: #e9ecef; /* A slightly darker gray for footer */
+}
