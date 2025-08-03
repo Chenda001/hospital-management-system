@@ -33,7 +33,3 @@ admin.site.register(HomeContent)
 admin.site.register(AboutSection)
 admin.site.register(Base)
 admin.site.register(Footer)
-
-
-
-# Register your models here.

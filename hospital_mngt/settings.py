@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'pwani_hospital',
+    'pwani_hospital',
 ]
 
 MIDDLEWARE = [
@@ -58,14 +58,17 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),  # Global templates directory, if you have one
+            os.path.join(BASE_DIR, 'templates'),  # Global templates directory, if you have one
         ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pwani_hospital.context_processors.site_context', # Makes footer and base settings available globally
                 'pwani_hospital.context_processors.site_context', # Makes footer and base settings available globally
             ],
         },

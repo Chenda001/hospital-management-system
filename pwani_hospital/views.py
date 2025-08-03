@@ -20,6 +20,11 @@ def about(request):
         'about': about_section
     }
     return render(request, 'pwani_hospital/about.html', context)
+    about_section = AboutSection.objects.first()
+    context = {
+        'about': about_section
+    }
+    return render(request, 'pwani_hospital/about.html', context)
 
 def services(request):
     services_list = Service.objects.all()
