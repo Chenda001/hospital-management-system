@@ -39,3 +39,4 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = UserCreationForm.Meta.fields + ['email']
         """
+        

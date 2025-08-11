@@ -71,6 +71,7 @@ class Base(models.Model):
 
     class Meta:
         verbose_name_plural = "Base Settings"
+        
 
 class Footer(models.Model):
     """
