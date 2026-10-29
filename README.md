@@ -16,9 +16,13 @@ Medical Records — Maintain patient medical information where implemented.
 **🛠️ Technologies Used**
 
 Add the technologies and frameworks used in this project:
+
 Frontend: [Add frontend technologies]
+
 Backend: [Add backend technologies]
+
 Database: [Add database technology]
+
 Tools: Git and GitHub
 
 **🚀 Getting Started**
@@ -40,27 +44,31 @@ Navigate to the project directory:
 
 bash
 
-
 cd hospital-management-system
 
 Install the project dependencies using the package manager appropriate for the project.
 Configure the required environment variables and database settings, if applicable.
 Run the application using the appropriate development command.
-**Note**: The exact dependency installation, configuration, and run commands should be added after confirming the project's technology stack.
+**Note**: 
+The exact dependency installation, configuration, and run commands should be added after confirming the project's technology stack.
 
 **💻 Usage**
+
 Start the application using the documented setup instructions.
 Open the application in the appropriate environment.
 Explore the available features and functionality.
 Follow the access and usage instructions provided by the application.
 
 **📂 Project Structure**
+
 The project structure depends on the technologies and architecture used. Update this section with the main directories and files in the repository.
 
 **🔒 Security and Privacy**
+
 Hospital systems may handle sensitive information. Any production deployment should implement appropriate authentication, access controls, secure data storage, and protection of patient information.
 
 **🤝 Contributing**
+
 Contributions and suggestions are welcome.
 
 Fork the repository.
@@ -69,8 +77,7 @@ Commit your changes.
 Push your branch to GitHub.
 Open a pull request describing your changes.
 
-**📄 License**
-Add the applicable license information here. If the repository does not currently have a license, choose an appropriate license before distributing the project for reuse.
 
-👨‍💻 Author
-Chenda001
+**👨‍💻 Author
+
+**Chenda001****
