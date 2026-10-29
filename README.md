@@ -1,13 +1,11 @@
 # hospital-management-system
 
-🏥 Hospital Management System
-📌 Overview
-
 The Hospital Management System is a software project designed to help organize and manage hospital-related operations efficiently. It aims to simplify the handling of hospital information and provide a structured way to manage day-to-day activities.
 
 This project is developed to demonstrate how software can support healthcare administration and improve information management.
 
 **✨ Features**
+
 Update this section to reflect the features implemented in the project.
 Patient Management — Manage patient information and records.
 Doctor Management — Organize doctor details and related information.
@@ -16,6 +14,7 @@ User Management — Manage system users and access where supported.
 Medical Records — Maintain patient medical information where implemented.
 
 **🛠️ Technologies Used**
+
 Add the technologies and frameworks used in this project:
 Frontend: [Add frontend technologies]
 Backend: [Add backend technologies]
@@ -23,17 +22,25 @@ Database: [Add database technology]
 Tools: Git and GitHub
 
 **🚀 Getting Started**
+
+
 Follow these steps to obtain a local copy of the project.
 Prerequisites
 Install the tools required by the project, such as Git, the relevant programming language runtime, and any required database.
 
 **Installation**
+
+
 Clone the repository:
 bash
+
 git clone https://github.com/Chenda001/hospital-management-system.git
 
 Navigate to the project directory:
+
 bash
+
+
 cd hospital-management-system
 
 Install the project dependencies using the package manager appropriate for the project.
